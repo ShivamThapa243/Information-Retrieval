@@ -1,4 +1,5 @@
 import os
+import pickle
 
 # function to map each term present in the corpus with the corresponding documentId
 def term_document_mapping():
@@ -71,5 +72,5 @@ postings_list = posting_list_mapping(sorted_term_docid)
 # final step mapping each term with their corresponding postings list and document frequency
 inverted_index = map_terms_postings(postings_list)
 
-'''for element in inverted_index:
-    print(element) '''
+with open('boolean_inverted_index', 'wb') as file:
+    pickle.dump(inverted_index, file)
