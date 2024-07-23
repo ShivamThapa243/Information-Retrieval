@@ -7,15 +7,17 @@ file_list = os.listdir(directory_path)
 preprocessed_directory_path = "preprocessed_files"
 os.makedirs(preprocessed_directory_path, exist_ok=True)
 
+file_number = 0
 for filename in file_list:
     file_path = os.path.join(directory_path, filename)
     with open(file_path) as file:
         content = file.read()
         final_tokens = preprocessing.preprocessing_file(content)
 
-    preprocessed_file_path = os.path.join(preprocessed_directory_path, f"preprocessed_{filename}")
+    file_number += 1
+    preprocessed_file_path = os.path.join(preprocessed_directory_path, f"{file_number}")
     with open(preprocessed_file_path, 'w') as file:
-        file.write(str(final_tokens))
+        file.write(final_tokens)
 
 # Printing contents of 5 sample files before and after performing each operation.
 file_count = 0
