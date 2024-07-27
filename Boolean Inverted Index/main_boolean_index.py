@@ -85,6 +85,7 @@ def operations_on_inverted_index(sequence_tokens, operations):
 
     while(len(operation_list) > 0 ):
         operator = operation_list.pop(0)
+        temp_list = []
         
         if len(operation_list) == 0 and  operator.lower() == "not":
             first_list = queue_posting.pop(0)
@@ -122,7 +123,7 @@ print("Number of queries to execute")
 n = input()
 n = int(n)
 
-while (n > 0): 
+for i in range(n):
     with open('boolean_inverted_index', 'rb') as file:
         inverted_index = pickle.load(file) 
 
